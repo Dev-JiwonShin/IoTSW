@@ -26,13 +26,13 @@ int main()
     exit(-1);
   } volatile unsigned int* gpio
     = (volatile unsigned int*)gpio_memory_map;
-  gpio[GPFSEL1 / 4] = (1 << 24);
-  // *(gpio + (GPFSEL1 / 4)) = (1<<24);
+  gpio[GPFSEL1 / 4] = (1 << 18);
+  // *(gpio + (GPFSEL1 / 4)) = (1<<18);
   int i;
   for ( i = 0; i < 5; i++ ) {
-    gpio[GPCLR0 / 4] = (1 << 18);
+    gpio[GPCLR0 / 4] = (1 << 16);
     sleep(1);
-    gpio[GPSET0 / 4] = (1 << 18);
+    gpio[GPSET0 / 4] = (1 << 16);
     sleep(1);
   }
   munmap( gpio_memory_map, 4096);
