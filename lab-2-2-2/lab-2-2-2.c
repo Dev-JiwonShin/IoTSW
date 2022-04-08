@@ -13,8 +13,11 @@ void LEDControl(int pinnum)
   int i;
   for (i = 0; i < 16; i++)
   {
-    if (i == pinnum)
+    if (i == pinnum){
       digitalWrite(Led[i], LED_ON);
+      digitalWrite(Led[i+1], LED_ON);
+}
+
     else
       digitalWrite(Led[i], LED_OFF);
   }
@@ -30,17 +33,11 @@ void LEDControl(int pinnum)
   }
   while (1)
   {
-    for (i = 0; i < 16; i++)
+    for (i = 0; i < 8; i++)
     {
       LEDControl(i);
       delay(500);
 	i++;
-    } for (i = 1; i < 16; i++)
-    {
-      LEDControl(i);
-      delay(500);
-	i++;
-    }
-  }
+    } 
   return 0;
 }
