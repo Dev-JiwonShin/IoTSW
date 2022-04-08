@@ -19,9 +19,12 @@ void LEDControl(int pinnum)
 }
 
     else
-      digitalWrite(Led[i], LED_OFF);
-i++;
 
+{digitalWrite(Led[i], LED_OFF); 
+
+
+
+digitalWrite(Led[i+1], LED_OFF); }i++;
 }
 } int main(void)
 {
@@ -35,10 +38,10 @@ i++;
   }
   while (1)
   {
-    for (i = 0; i < 8; i++)
+    for (i = 0; i < 16; i++)
     {
       LEDControl(i);
-      delay(500);i++;
+      delay(500);
 
     } 
   return 0;
