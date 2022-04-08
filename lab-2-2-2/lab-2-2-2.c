@@ -20,7 +20,9 @@ void LEDControl(int pinnum)
 
     else
       digitalWrite(Led[i], LED_OFF);
-  }
+i++;
+
+}
 } int main(void)
 {
   int i;
@@ -36,8 +38,8 @@ void LEDControl(int pinnum)
     for (i = 0; i < 8; i++)
     {
       LEDControl(i);
-      delay(500);
-	i++;
+      delay(500);i++;
+
     } 
   return 0;
-}
+}}
