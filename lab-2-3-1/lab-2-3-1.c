@@ -9,7 +9,7 @@ const int Keypad[8] = {16, 13, 12, 6, 21, 26, 20, 19};
 // Variables will change:
 int ledState = HIGH;         // the current state of the output pin
 int buttonState;             // the current reading from the input pin
-int lastButtonState = LOW;   // the previous reading from the input pin
+int lastButtonState = HIGH;   // the previous reading from the input pin
 
 // the following variables are long's because the time, measured in miliseconds,
 // will quickly become a bigger number than can be stored in an int.
