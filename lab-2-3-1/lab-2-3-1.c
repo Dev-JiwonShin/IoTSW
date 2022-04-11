@@ -49,7 +49,7 @@ int KeypadRead() {
 //        }
 
 
-        bool reading = digitalRead(Keypad[i]); //스위치 버턴상태값을 읽는다.
+        int reading = !digitalRead(Keypad[i]); //스위치 버턴상태값을 읽는다.
         int debounceDelay = 50; //바운드에 대한 기준 시간값
         unsigned long lastDebounceTime = 0; // 현재시간값을 가져와서 저장할 변수 자료형은 같은형으로 맞춤
         int buttonstate = 1; //내부풀업모드 버턴이 초기값이 1이여서 초기값을 1로 잡음.
@@ -63,7 +63,7 @@ int KeypadRead() {
 
             if (reading != buttonstate) { // 버턴이 On/Off 됐는지 확인(버턴의 변화가 일어났는가)
                 buttonstate = reading; //버턴의 변화가 일어났으면 그 변화를 기록했다가 다음 버턴 변화의 비교대상이 됨
-                if (!reading) {
+                if (reading) {
                     keypadnum = i;
                     break;
                 }
