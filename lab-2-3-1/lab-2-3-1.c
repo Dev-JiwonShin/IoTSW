@@ -27,14 +27,11 @@ int debounce(int reading) {
         if (reading != buttonState) { // 버턴이 On/Off 됐는지 확인(버턴의 변화가 일어났는가)
             buttonSate = reading; //버턴의 변화가 일어났으면 그 변화를 기록했다가 다음 버턴 변화의 비교대상이 됨
             return 1;
-//            스위치
-//            On / Off로
-//            인정한
-//            동작 수행;
         }
     }
 
     lastButtonState = reading; //현재 읽은 버턴의 상태를 다음 버턴의 상태와 비교하기 위해 변수에 저장한다.
+    return 0;
 }
 
 
