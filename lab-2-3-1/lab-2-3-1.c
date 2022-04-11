@@ -35,14 +35,14 @@ int KeypadRead() {
 
     int i, keypadnum = -1;
     for (i = 0; i < 8; i++) {
-        if (debounce(Keypad[i]) == 1) {
-            keypadnum = i;
-            break;
-        }
-//        if (!digitalRead(Keypad[i])) {
+//        if (debounce(Keypad[i]) == 1) {
 //            keypadnum = i;
 //            break;
 //        }
+        if (!digitalRead(Keypad[i])) {
+            keypadnum = i;
+            break;
+        }
     }
     return keypadnum;
 }
