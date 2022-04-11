@@ -1,7 +1,3 @@
-// KeyPad 버튼을 누르고 있을 경우 동일한 번호의 LED가 ON
-// KeyPad 버튼을 누르지 않을 경우 LED 전체 OFF
-
-// Wiring Pi Library 헤더파일 선언
 #include <wiringPi.h>
 
 const int LedRed[8] = {4, 17, 18, 27, 22, 23, 24, 25};
