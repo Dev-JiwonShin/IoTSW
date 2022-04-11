@@ -58,12 +58,12 @@ int KeypadRead() {
 void LedControl(int keypadnum) {
     int i;
     for (i = 0; i < 8; i++) {
-        if (lastButtonState[i] == LOW) {
-            if (i == keypadnum)
-                digitalWrite(LedRed[i], HIGH);
-            else
-                digitalWrite(LedRed[i], LOW);
-        }
+//        if (lastButtonState[i] == LOW) {
+        if (i == keypadnum)
+            digitalWrite(LedRed[i], HIGH);
+        else
+            digitalWrite(LedRed[i], LOW);
+//        }
     }
 }
 
@@ -79,7 +79,28 @@ int main(void) {
         pinMode(Keypad[i], INPUT);
     while (1) {
         keypadnum = KeypadRead();
+        
+        if (reading != -1) {
+            // If the switch changed, due to noise or pressing:
+            if (reading != lastButtonState[i]) {
+                // reset the debouncing timer
+                lastDebounceTime[i] = millis();
+            }
+
+            if ((millis() - lastDebounceTime[i]) > debounceDelay) {
+                // whatever the reading is at, it's been there for longer
+                // than the debounce delay, so take it as the actual current state:
+                buttonState[i] = reading;
+            }
+
+            // save the reading.  Next time through the loop,
+            // it'll be the lastButtonState:
+            lastButtonState[i] = reading;
+            keypadnum = i;
+            break;
         LedControl(keypadnum);
+        }
+
     }
     return 0;
 }
