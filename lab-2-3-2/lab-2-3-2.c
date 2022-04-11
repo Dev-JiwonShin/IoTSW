@@ -7,7 +7,8 @@
 
 const int LedRed[8] = {4, 17, 18, 27, 22, 23, 24, 25};
 // 0, 1, 2, 3, 4, 5, 6, 7
-const int Keypad[5] = {16, 19, 4, 17, 18};
+const int Keypad[5] = {16, 19, 17, 18, 27};
+//const int Keypad[5] = {16, 19, 4, 17, 18};
 // 3, 4, 0, 1, 2
 // 3, 4 -> 예제
 // 0, 1 -> 키패드1 아니면 2 클릭 시 동일한 동작을 반복
@@ -78,7 +79,7 @@ int main(void) {
             digitalWrite(LedRed[i + 1], LOW);
         } else if (keypadnum == 4) {
 //            delay(1000000);
-            return 0;
+//            return 0;
             //            for (i = 7; i >= 0; i--) {
             //                LedControl(i);
             //                delay(500);
