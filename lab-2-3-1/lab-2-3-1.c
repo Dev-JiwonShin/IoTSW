@@ -34,7 +34,7 @@ int main(void) {
         return 1;
     for (i = 0; i < 8; i++) {
         pinMode(LedRed[i], OUTPUT);
-        digitalWrite(LedRed[i], LOW);
+        digitalWrite(LedRed[i], HIGH);
     }
     for (i = 0; i < 8; i++)
         pinMode(Keypad[i], INPUT);
