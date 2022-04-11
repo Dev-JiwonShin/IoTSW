@@ -24,8 +24,8 @@ int debounce(int reading) {
 
     if ((millis() - lastDebounceTime) > debounceDelay) {  //버턴변화가 50시간값 안에 발생했으면 바운스(채터링)으로 무시
 
-        if (reading != buttonState) { // 버턴이 On/Off 됐는지 확인(버턴의 변화가 일어났는가)
-            buttonSate = reading; //버턴의 변화가 일어났으면 그 변화를 기록했다가 다음 버턴 변화의 비교대상이 됨
+        if (reading != buttonstate) { // 버턴이 On/Off 됐는지 확인(버턴의 변화가 일어났는가)
+            buttonstate = reading; //버턴의 변화가 일어났으면 그 변화를 기록했다가 다음 버턴 변화의 비교대상이 됨
             return 1;
         }
     }
