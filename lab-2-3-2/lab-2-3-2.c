@@ -118,7 +118,7 @@ int main(void) {
                         while (1) {
                             stopper = KeypadRead();
                             if (stopper != -1) {
-                                throw stopper;
+                                THROW;
                             }
                         }
                     }
