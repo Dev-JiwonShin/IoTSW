@@ -16,7 +16,7 @@ const int Keypad[5] = {16, 19, 4, 17, 18};
 
 int KeypadRead() {
     int i, keypadnum = -1;
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 5; i++) {
         if (!digitalRead(Keypad[i])) {
             keypadnum = i;
             break;
@@ -64,6 +64,10 @@ int main(void) {
             for (i = 0; i < 8; i++) {
                 LedControl(i);
                 delay(500);
+//                if (i == 7) {
+//                    digitalWrite(LedRed[i - 1], LOW);
+//                    i=0;
+//                }
             }
             digitalWrite(LedRed[i - 1], LOW);
         } else if (keypadnum == 3) {
