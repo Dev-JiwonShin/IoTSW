@@ -15,8 +15,8 @@ int debounce(int reading) {
 //    int reading = digitalRead(BUTTONPIN); //스위치 버턴상태값을 읽는다.
     int debounceDelay = 50; //바운드에 대한 기준 시간값
     unsigned long lastDebounceTime = 0; // 현재시간값을 가져와서 저장할 변수 자료형은 같은형으로 맞춤
-    int buttonstate = 1; //내부풀업모드 버턴이 초기값이 1이여서 초기값을 1로 잡음.
-    int lastButtonState = 1; //마지막 버턴상태를 기록변수
+    int buttonstate = 10; //내부풀업모드 버턴이 초기값이 1이여서 초기값을 1로 잡음.
+    int lastButtonState = 10; //마지막 버턴상태를 기록변수
 
     if (reading != lastButtonState) { //현재 읽은 버턴의 상태값과 이전상태가 다른지 체크
         lastDebounceTime = millis(); // 다르면 변화(On/Off)가 일어난거니 그 시간을 변수에 저장시킨다.
