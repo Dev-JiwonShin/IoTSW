@@ -12,6 +12,7 @@ const int LedRed[8] = {4, 17, 18, 27, 22, 23, 24, 25};
 const int Keypad[5] = {16, 19, 6, 12, 13};
 
 
+
 int KeypadRead() {
     int i, keypadnum = -1;
     for (i = 0; i < 5; i++) {
@@ -56,108 +57,108 @@ int main(void) {
         }
 
         if (keypadnum == 0) {
-            TRY
-                    {
-                        for (i = 0; i < 8; i++) {
-                            stopper = KeypadRead();
-                            if (stopper != -1) {
-                                THROW;
-                            }
-                            LedControl(i);
-                            delay(500);
-                        }
-                        digitalWrite(LedRed[i - 1], LOW);
+            TRY{
+                for (i = 0; i < 8; i++) {
+                    stopper = KeypadRead();
+                    if (stopper != -1) {
+                        THROW;
                     }
-                CATCH
-                    {
-                        for (i = 7; i >= 0; i--) {
-                            digitalWrite(LedRed[i], LOW);
-                        }
-                    }
+                    LedControl(i);
+                    delay(500);
+                }
+                digitalWrite(LedRed[i - 1], LOW);
+            }
+            CATCH{
+                for (i = 7; i >= 0; i--) {
+                    digitalWrite(LedRed[i], LOW);
+                }
+            }
             ETRY;
 
         } else if (keypadnum == 1) {
-            TRY
-                    {
-                        for (i = 7; i >= 0; i--) {
-                            stopper = KeypadRead();
-                            if (stopper != -1) {
-                                THROW;
-                            }
-                            LedControl(i);
-                            delay(500);
-                        }
-                        digitalWrite(LedRed[i + 1], LOW);
+            TRY{
+                for (i = 7; i >= 0; i--) {
+                    stopper = KeypadRead();
+                    if (stopper != -1) {
+                        THROW;
                     }
-                CATCH
-                    {
-                        for (i = 7; i >= 0; i--) {
-                            digitalWrite(LedRed[i], LOW);
-                        }
-                    }
+                    LedControl(i);
+                    delay(500);
+                }
+                digitalWrite(LedRed[i + 1], LOW);
+            }
+            CATCH
+            {
+                for (i = 7; i >= 0; i--) {
+                    digitalWrite(LedRed[i], LOW);
+                }
+            }
             ETRY;
 
         } else if (keypadnum == 2) {
             TRY
-                    {
-                        while (1) {
+            {
+                while (1) {
 
-                            for (i = 0; i < 8; i++) {
-                                stopper = KeypadRead();
-                                if (stopper != -1) {
-                                    THROW;
-                                }
-                                LedControl(i);
-                                delay(500);
-                            }
+                    for (i = 0; i < 8; i++) {
+                        stopper = KeypadRead();
+                        if (stopper != -1) {
+                            THROW;
                         }
-                        digitalWrite(LedRed[i - 1], LOW);
+                        LedControl(i);
+                        delay(500);
                     }
-                CATCH
-                    {
-                        for (i = 7; i >= 0; i--) {
-                            digitalWrite(LedRed[i], LOW);
-                        }
-                    }ETRY;
+                }
+                digitalWrite(LedRed[i - 1], LOW);
+            }
+            CATCH
+            {
+                for (i = 7; i >= 0; i--) {
+                    digitalWrite(LedRed[i], LOW);
+                }
+            }
+            ETRY;
         } else if (keypadnum == 3) {
             TRY
-                    {
-                        while (1) {
+            {
+                while (1) {
 
-                            for (i = 7; i >= 0; i--) {
-                                stopper = KeypadRead();
-                                if (stopper != -1) {
-                                    THROW;
-                                }
-                                LedControl(i);
-                                delay(500);
-                            }
+                    for (i = 7; i >= 0; i--) {
+                        stopper = KeypadRead();
+                        if (stopper != -1) {
+                            THROW;
                         }
-                        digitalWrite(LedRed[i + 1], LOW);
+                        LedControl(i);
+                        delay(500);
                     }
-                CATCH
-                    {
-                        for (i = 7; i >= 0; i--) {
-                            digitalWrite(LedRed[i], LOW);
-                        }
-                    }ETRY;
+                }
+                digitalWrite(LedRed[i + 1], LOW);
+            }
+            CATCH
+            {
+                for (i = 7; i >= 0; i--) {
+                    digitalWrite(LedRed[i], LOW);
+                }
+            }
+            ETRY;
 
         } else if (keypadnum == 4) {
             TRY
-                    {
-                        while (1) {
-                            stopper = KeypadRead();
-                            if (stopper != -1) {
-                                THROW;
-                            }
-                        }
+            {
+                while (1) {
+                    stopper = KeypadRead();
+                    if (stopper != -1) {
+                        THROW;
                     }
-                CATCH
-                    {
-                        for (i = 7; i >= 0; i--) {
-                            digitalWrite(LedRed[i], LOW);
-                        }
-                    }ETRY;
+                }
+            }
+            CATCH
+            {
+                for (i = 7; i >= 0; i--) {
+                    digitalWrite(LedRed[i], LOW);
+                }
+            }
+            ETRY;
         }
     }
     return 0;
