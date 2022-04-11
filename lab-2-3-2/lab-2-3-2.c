@@ -1,4 +1,12 @@
+#include <stdio.h>
+#include <setjmp.h>
 #include <wiringPi.h>
+
+#define TRY do{ jmp_buf ex_buf__; if( !setjmp(ex_buf__) ){
+#define CATCH } else {
+#define ETRY } }while(0)
+#define THROW longjmp(ex_buf__, 1)
+
 
 const int LedRed[8] = {4, 17, 18, 27, 22, 23, 24, 25};
 const int Keypad[5] = {16, 19, 6, 12, 13};
@@ -62,64 +70,64 @@ int main(void) {
             digitalWrite(LedRed[i + 1], LOW);
 
         } else if (keypadnum == 2) {
-            try
-            {
-                while (true) {
-                    stopper = KeypadRead();
-                    if (stopper != -1) {
-                        throw stopper;
+            TRY
+                    {
+                        while (true) {
+                            stopper = KeypadRead();
+                            if (stopper != -1) {
+                                THROW;
+                            }
+                            for (i = 0; i < 8; i++) {
+                                LedControl(i);
+                                delay(500);
+                            }
+                        }
+                        digitalWrite(LedRed[i - 1], LOW);
                     }
-                    for (i = 0; i < 8; i++) {
-                        LedControl(i);
-                        delay(500);
-                    }
-                }
-                digitalWrite(LedRed[i - 1], LOW);
-            }
-            catch(int index)
-            {
-                for (i = 7; i >= 0; i--) {
-                    digitalWrite(LedRed[i], LOW);
-                }
-            }
+                CATCH
+                    {
+                        for (i = 7; i >= 0; i--) {
+                            digitalWrite(LedRed[i], LOW);
+                        }
+                    }ETRY;
         } else if (keypadnum == 3) {
-            try
-            {
-                while (true) {
-                    stopper = KeypadRead();
-                    if (stopper != -1) {
-                        throw stopper;
+            TRY
+                    {
+                        while (true) {
+                            stopper = KeypadRead();
+                            if (stopper != -1) {
+                                THROW;
+                            }
+                            for (i = 7; i >= 0; i--) {
+                                LedControl(i);
+                                delay(500);
+                            }
+                        }
+                        digitalWrite(LedRed[i + 1], LOW);
                     }
-                    for (i = 7; i >= 0; i--) {
-                        LedControl(i);
-                        delay(500);
-                    }
-                }
-                digitalWrite(LedRed[i + 1], LOW);
-            }
-            catch(int index)
-            {
-                for (i = 7; i >= 0; i--) {
-                    digitalWrite(LedRed[i], LOW);
-                }
-            }
+                CATCH
+                    {
+                        for (i = 7; i >= 0; i--) {
+                            digitalWrite(LedRed[i], LOW);
+                        }
+                    }ETRY;
 
         } else if (keypadnum == 4) {
-            try
-            {
-                while (true) {
-                    stopper = KeypadRead();
-                    if (stopper != -1) {
-                        throw stopper;
+            TRY
+                    {
+                        while (true) {
+                            stopper = KeypadRead();
+                            if (stopper != -1) {
+                                throw stopper;
+                            }
+                        }
                     }
-                }
-            }
-            catch(int index)
-            {
-                for (i = 7; i >= 0; i--) {
-                    digitalWrite(LedRed[i], LOW);
-                }
-            }
+                CATCH
+                    {
+                        for (i = 7; i >= 0; i--) {
+                            digitalWrite(LedRed[i], LOW);
+                        }
+                    }ETRY;
         }
     }
     return 0;
