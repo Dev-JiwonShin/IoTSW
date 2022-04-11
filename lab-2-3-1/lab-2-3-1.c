@@ -8,12 +8,12 @@ const int Keypad[8] = {16, 13, 12, 6, 21, 26, 20, 19};
 
 // Variables will change:
 int ledState = HIGH;         // the current state of the output pin
-int buttonState;             // the current reading from the input pin
-int lastButtonState = LOW;   // the previous reading from the input pin
+int buttonState[8] = {};             // the current reading from the input pin
+int lastButtonState[8] = {LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW};   // the previous reading from the input pin
 
 // the following variables are long's because the time, measured in miliseconds,
 // will quickly become a bigger number than can be stored in an int.
-long lastDebounceTime = 0;  // the last time the output pin was toggled
+long lastDebounceTime[8] = {0, 0, 0, 0, 0, 0, 0, 0};  // the last time the output pin was toggled
 long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
 int KeypadRead() {
@@ -23,23 +23,30 @@ int KeypadRead() {
         if (reading) {
 
             // If the switch changed, due to noise or pressing:
-            if (reading != lastButtonState) {
+            if (reading != lastButtonState[i]) {
                 // reset the debouncing timer
-                lastDebounceTime = millis();
+                lastDebounceTime[i] = millis();
             }
 
-            if ((millis() - lastDebounceTime) > debounceDelay) {
+            if ((millis() - lastDebounceTime[i]) > debounceDelay) {
                 // whatever the reading is at, it's been there for longer
                 // than the debounce delay, so take it as the actual current state:
-                buttonState = reading;
+                buttonState[i] = reading;
             }
 
             // set the LED using the state of the button:
 //            digitalWrite(ledPin, buttonState);
+//            int j;
+//            for (j = 0; j < 8; j++) {
+//                if (j == i)
+//                    digitalWrite(LedRed[j], HIGH);
+//                else
+//                    digitalWrite(LedRed[j], LOW);
+//            }
 
             // save the reading.  Next time through the loop,
             // it'll be the lastButtonState:
-            lastButtonState = reading;
+            lastButtonState[i] = reading;
             keypadnum = i;
             break;
 
