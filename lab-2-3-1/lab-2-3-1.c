@@ -16,40 +16,51 @@ int lastButtonState[8] = {LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW};   // the prev
 long lastDebounceTime[8] = {0, 0, 0, 0, 0, 0, 0, 0};  // the last time the output pin was toggled
 long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
+// int KeypadRead() {
+//     int i, keypadnum = -1;
+//     for (i = 0; i < 8; i++) {
+//         int reading = !digitalRead(Keypad[i]);
+//         if (reading) {
+
+//             // If the switch changed, due to noise or pressing:
+//             if (reading != lastButtonState[i]) {
+//                 // reset the debouncing timer
+//                 lastDebounceTime[i] = millis();
+//             }
+
+//             if ((millis() - lastDebounceTime[i]) > debounceDelay) {
+//                 // whatever the reading is at, it's been there for longer
+//                 // than the debounce delay, so take it as the actual current state:
+//                 buttonState[i] = reading;
+//             }
+
+//             // set the LED using the state of the button:
+// //            digitalWrite(ledPin, buttonState);
+// //            int j;
+// //            for (j = 0; j < 8; j++) {
+// //                if (j == i)
+// //                    digitalWrite(LedRed[j], HIGH);
+// //                else
+// //                    digitalWrite(LedRed[j], LOW);
+// //            }
+
+//             // save the reading.  Next time through the loop,
+//             // it'll be the lastButtonState:
+//             lastButtonState[i] = reading;
+//             keypadnum = i;
+//             break;
+
+//         }
+//     }
+//     return keypadnum;
+// }
+
 int KeypadRead() {
     int i, keypadnum = -1;
     for (i = 0; i < 8; i++) {
-        int reading = !digitalRead(Keypad[i]);
-        if (reading) {
-
-            // If the switch changed, due to noise or pressing:
-            if (reading != lastButtonState[i]) {
-                // reset the debouncing timer
-                lastDebounceTime[i] = millis();
-            }
-
-            if ((millis() - lastDebounceTime[i]) > debounceDelay) {
-                // whatever the reading is at, it's been there for longer
-                // than the debounce delay, so take it as the actual current state:
-                buttonState[i] = reading;
-            }
-
-            // set the LED using the state of the button:
-//            digitalWrite(ledPin, buttonState);
-//            int j;
-//            for (j = 0; j < 8; j++) {
-//                if (j == i)
-//                    digitalWrite(LedRed[j], HIGH);
-//                else
-//                    digitalWrite(LedRed[j], LOW);
-//            }
-
-            // save the reading.  Next time through the loop,
-            // it'll be the lastButtonState:
-            lastButtonState[i] = reading;
+        if (!digitalRead(Keypad[i])) {
             keypadnum = i;
             break;
-
         }
     }
     return keypadnum;
@@ -82,7 +93,7 @@ int main(void) {
         
         if (keypadnum != -1) {
             // If the switch changed, due to noise or pressing:
-            if (reading != lastButtonState[i]) {
+            if (keypadnum != lastButtonState[i]) {
                 // reset the debouncing timer
                 lastDebounceTime[i] = millis();
             }
@@ -90,12 +101,12 @@ int main(void) {
             if ((millis() - lastDebounceTime[i]) > debounceDelay) {
                 // whatever the reading is at, it's been there for longer
                 // than the debounce delay, so take it as the actual current state:
-                buttonState[i] = reading;
+                buttonState[i] = keypadnum;
             }
 
             // save the reading.  Next time through the loop,
             // it'll be the lastButtonState:
-            lastButtonState[i] = reading;
+            lastButtonState[i] = keypadnum;
             keypadnum = i;
             break;
         LedControl(keypadnum);
