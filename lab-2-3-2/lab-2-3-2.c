@@ -53,30 +53,43 @@ int main(void) {
                 delay(500);
             }
             digitalWrite(LedRed[i - 1], LOW);
-        } else if (keypadnum == 1) {
+        } 
+        else if (keypadnum == 1) {
             for (i = 7; i >= 0; i--) {
                 LedControl(i);
                 delay(500);
             }
             digitalWrite(LedRed[i + 1], LOW);
-        } else if (keypadnum == 2 || keypadnum == 3) {
+        }
+        else if (keypadnum == 2 ){
+          while(1){
+             for (i = 0; i < 8; i++) {
+                LedControl(i);
+                delay(500);
+            }
+            digitalWrite(LedRed[i - 1], LOW);
+            } 
+        } 
+        else if (keypadnum ==  3) {
+          while(1){
             for (i = 7; i >= 0; i--) {
                 LedControl(i);
                 delay(500);
                 if (i == 1) i = 7;
             }
             digitalWrite(LedRed[i + 1], LOW);
-        } else if (keypadnum == 4) {
-
-
- delay(1000000);          
-// return 0;
-            //            for (i = 7; i >= 0; i--) {
-//                LedControl(i);
-//                delay(500);
-//            }
-//            digitalWrite(LedRed[i + 1], LOW);
+          }    
         }
-    }
-    return 0;
+        else if (keypadnum == 4) {
+
+
+         delay(1000000);          
+        // return 0;
+                    //            for (i = 7; i >= 0; i--) {
+        //                LedControl(i);
+        //                delay(500);
+        //            }
+        //            digitalWrite(LedRed[i + 1], LOW);
+        }
+        return 0;
 }
