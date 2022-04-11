@@ -73,15 +73,12 @@ int main(void) {
                 for (i = 7; i >= 0; i--) {
                     LedControl(i);
                     delay(500);
-                    if (i == 0)
-                        i = 7;
                 }
                 digitalWrite(LedRed[i + 1], LOW);
             }
         } else if (keypadnum == 4) {
-
-
             delay(1000000);
+
             // return 0;
             //            for (i = 7; i >= 0; i--) {
             //                LedControl(i);
