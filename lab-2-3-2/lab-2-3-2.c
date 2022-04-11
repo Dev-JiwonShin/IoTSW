@@ -56,28 +56,57 @@ int main(void) {
         }
 
         if (keypadnum == 0) {
-            for (i = 0; i < 8; i++) {
-                LedControl(i);
-                delay(500);
-            }
-            digitalWrite(LedRed[i - 1], LOW);
+            TRY
+                    {
+                        for (i = 0; i < 8; i++) {
+                            stopper = KeypadRead();
+                            if (stopper != -1) {
+                                THROW;
+                            }
+                            LedControl(i);
+                            delay(500);
+                        }
+                        digitalWrite(LedRed[i - 1], LOW);
+                    }
+                CATCH
+                    {
+                        for (i = 7; i >= 0; i--) {
+                            digitalWrite(LedRed[i], LOW);
+                        }
+                    }
+            ETRY;
 
         } else if (keypadnum == 1) {
-            for (i = 7; i >= 0; i--) {
-                LedControl(i);
-                delay(500);
-            }
-            digitalWrite(LedRed[i + 1], LOW);
+            TRY
+                    {
+                        for (i = 7; i >= 0; i--) {
+                            stopper = KeypadRead();
+                            if (stopper != -1) {
+                                THROW;
+                            }
+                            LedControl(i);
+                            delay(500);
+                        }
+                        digitalWrite(LedRed[i + 1], LOW);
+                    }
+                CATCH
+                    {
+                        for (i = 7; i >= 0; i--) {
+                            digitalWrite(LedRed[i], LOW);
+                        }
+                    }
+            ETRY;
 
         } else if (keypadnum == 2) {
             TRY
                     {
                         while (1) {
-                            stopper = KeypadRead();
-                            if (stopper != -1) {
-                                THROW;
-                            }
+
                             for (i = 0; i < 8; i++) {
+                                stopper = KeypadRead();
+                                if (stopper != -1) {
+                                    THROW;
+                                }
                                 LedControl(i);
                                 delay(500);
                             }
@@ -94,11 +123,12 @@ int main(void) {
             TRY
                     {
                         while (1) {
-                            stopper = KeypadRead();
-                            if (stopper != -1) {
-                                THROW;
-                            }
+
                             for (i = 7; i >= 0; i--) {
+                                stopper = KeypadRead();
+                                if (stopper != -1) {
+                                    THROW;
+                                }
                                 LedControl(i);
                                 delay(500);
                             }
