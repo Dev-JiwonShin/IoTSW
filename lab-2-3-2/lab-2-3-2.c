@@ -36,7 +36,7 @@ void LedControl(int num) {
 }
 
 int main(void) {
-    int i, keypadnum = -1;
+    int i, j, keypadnum = -1;
     if (wiringPiSetupGpio() == -1)
         return 1;
     for (i = 0; i < 8; i++) {
@@ -62,24 +62,23 @@ int main(void) {
             digitalWrite(LedRed[i + 1], LOW);
         } else if (keypadnum == 2) {
             while (1) {
-                for (i = 0; i < 8; i++) {
-                    LedControl(i);
+                for (j = 0; j < 8; j++) {
+                    LedControl(j);
                     delay(500);
                 }
-                digitalWrite(LedRed[i - 1], LOW);
+                digitalWrite(LedRed[j - 1], LOW);
             }
         } else if (keypadnum == 3) {
             while (1) {
-                for (i = 7; i >= 0; i--) {
-                    LedControl(i);
+                for (j = 7; j >= 0; j--) {
+                    LedControl(j);
                     delay(500);
                 }
-                digitalWrite(LedRed[i + 1], LOW);
+                digitalWrite(LedRed[j + 1], LOW);
             }
         } else if (keypadnum == 4) {
-            delay(1000000);
-
-            // return 0;
+//            delay(1000000);
+             return 0;
             //            for (i = 7; i >= 0; i--) {
             //                LedControl(i);
             //                delay(500);
