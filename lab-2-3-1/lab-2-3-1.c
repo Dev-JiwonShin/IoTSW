@@ -108,8 +108,8 @@ int main(void) {
             // it'll be the lastButtonState:
             lastButtonState[i] = keypadnum;
             keypadnum = i;
-            break;
-        LedControl(keypadnum);
+            LedControl(keypadnum);
+            // break;
         }
 
     }
