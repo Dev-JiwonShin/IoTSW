@@ -58,7 +58,7 @@ int KeypadRead() {
 //        }
 
 
-        int reading = !digitalRead(Keypad[i]); //스위치 버턴상태값을 읽는다.
+        int reading = digitalRead(Keypad[i]); //스위치 버턴상태값을 읽는다.
 
 
         if (reading) {
