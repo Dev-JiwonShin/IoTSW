@@ -62,33 +62,33 @@ int KeypadRead() {
 ////            keypadnum = i;
 ////            break;
 ////        }
-//    }
-        return keypadnum;
     }
+    return keypadnum;
+}
 
-    void LedControl(int keypadnum) {
-        int i;
-        for (i = 0; i < 8; i++) {
-            if (i == keypadnum)
-                digitalWrite(LedRed[i], HIGH);
-            else
-                digitalWrite(LedRed[i], LOW);
-        }
-    }
-
-    int main(void) {
-        int i, keypadnum = -1;
-        if (wiringPiSetupGpio() == -1)
-            return 1;
-        for (i = 0; i < 8; i++) {
-            pinMode(LedRed[i], OUTPUT);
+void LedControl(int keypadnum) {
+    int i;
+    for (i = 0; i < 8; i++) {
+        if (i == keypadnum)
+            digitalWrite(LedRed[i], HIGH);
+        else
             digitalWrite(LedRed[i], LOW);
-        }
-        for (i = 0; i < 8; i++)
-            pinMode(Keypad[i], INPUT);
-        while (1) {
-            keypadnum = KeypadRead();
-            LedControl(keypadnum);
-        }
-        return 0;
     }
+}
+
+int main(void) {
+    int i, keypadnum = -1;
+    if (wiringPiSetupGpio() == -1)
+        return 1;
+    for (i = 0; i < 8; i++) {
+        pinMode(LedRed[i], OUTPUT);
+        digitalWrite(LedRed[i], LOW);
+    }
+    for (i = 0; i < 8; i++)
+        pinMode(Keypad[i], INPUT);
+    while (1) {
+        keypadnum = KeypadRead();
+        LedControl(keypadnum);
+    }
+    return 0;
+}
