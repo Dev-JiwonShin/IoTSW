@@ -58,10 +58,12 @@ int KeypadRead() {
 void LedControl(int keypadnum) {
     int i;
     for (i = 0; i < 8; i++) {
-        if (i == keypadnum)
-            digitalWrite(LedRed[i], HIGH);
-        else
-            digitalWrite(LedRed[i], LOW);
+        if (lastButtonState[i] == LOW) {
+            if (i == keypadnum)
+                digitalWrite(LedRed[i], HIGH);
+            else
+                digitalWrite(LedRed[i], LOW);
+        }
     }
 }
 
