@@ -91,5 +91,5 @@ int main(void) {
         //            }
         //            digitalWrite(LedRed[i + 1], LOW);
         }
-        return 0;
+}        return 0;
 }
