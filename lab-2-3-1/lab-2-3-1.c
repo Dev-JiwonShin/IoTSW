@@ -28,40 +28,39 @@ int KeypadRead() {
 
 
         int reading = !digitalRead(Keypad[i]);
-        if (reading) {
-            keypadnum = i;
-            break;
-        }
+//        if (reading) {
+//            keypadnum = i;
+//            break;
+//        }
 
 
 //        int reading = digitalRead(Keypad[i]); //스위치 버턴상태값을 읽는다.
 
 //
-//        if (reading) {
-//
-//            if (reading != lastButtonState) { //현재 읽은 버턴의 상태값과 이전상태가 다른지 체크
-//                lastDebounceTime = millis(); // 다르면 변화(On/Off)가 일어난거니 그 시간을 변수에 저장시킨다.
-//            }
-//
-//            if ((millis() - lastDebounceTime) > debounceDelay) {  //버턴변화가 50시간값 안에 발생했으면 바운스(채터링)으로 무시
-//
-//                if (reading != buttonState) { // 버턴이 On/Off 됐는지 확인(버턴의 변화가 일어났는가)
-//                    buttonState = reading; //버턴의 변화가 일어났으면 그 변화를 기록했다가 다음 버턴 변화의 비교대상이 됨
-////                if (reading) {
-//                    keypadnum = i;
-//                    break;
-////                }
+        if (reading) {
+            if (reading != lastButtonState) { //현재 읽은 버턴의 상태값과 이전상태가 다른지 체크
+                lastDebounceTime = millis(); // 다르면 변화(On/Off)가 일어난거니 그 시간을 변수에 저장시킨다.
+            }
+
+            if ((millis() - lastDebounceTime) > debounceDelay) {  //버턴변화가 50시간값 안에 발생했으면 바운스(채터링)으로 무시
+
+                if (reading != buttonState) { // 버턴이 On/Off 됐는지 확인(버턴의 변화가 일어났는가)
+                    buttonState = reading; //버턴의 변화가 일어났으면 그 변화를 기록했다가 다음 버턴 변화의 비교대상이 됨
+//                if (reading) {
+                    keypadnum = i;
+                    break;
 //                }
-//            }
+                }
+            }
+        }
+
+        lastButtonState = reading; //현재 읽은 버턴의 상태를 다음 버턴의 상태와 비교하기 위해 변수에 저장한다.
+
+
+//        if (!digitalRead(Keypad[i])) {
+//            keypadnum = i;
+//            break;
 //        }
-//
-//        lastButtonState = reading; //현재 읽은 버턴의 상태를 다음 버턴의 상태와 비교하기 위해 변수에 저장한다.
-//
-//
-////        if (!digitalRead(Keypad[i])) {
-////            keypadnum = i;
-////            break;
-////        }
     }
     return keypadnum;
 }
