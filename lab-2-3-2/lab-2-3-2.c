@@ -49,10 +49,10 @@ int main(void) {
     int stopper = -1;
     while (1) {
         if (stopper == -1) {
+            keypadnum = KeypadRead();
+        } else {
             keypadnum = stopper;
             stopper = -1;
-        } else {
-            keypadnum = KeypadRead();
         }
 
         if (keypadnum == 0) {
@@ -72,7 +72,7 @@ int main(void) {
         } else if (keypadnum == 2) {
             TRY
                     {
-                        while (true) {
+                        while (1) {
                             stopper = KeypadRead();
                             if (stopper != -1) {
                                 THROW;
@@ -93,7 +93,7 @@ int main(void) {
         } else if (keypadnum == 3) {
             TRY
                     {
-                        while (true) {
+                        while (1) {
                             stopper = KeypadRead();
                             if (stopper != -1) {
                                 THROW;
@@ -115,7 +115,7 @@ int main(void) {
         } else if (keypadnum == 4) {
             TRY
                     {
-                        while (true) {
+                        while (1) {
                             stopper = KeypadRead();
                             if (stopper != -1) {
                                 throw stopper;
