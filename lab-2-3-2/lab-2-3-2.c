@@ -43,7 +43,7 @@ int main(void) {
         pinMode(LedRed[i], OUTPUT);
         digitalWrite(LedRed[i], LOW);
     }
-    for (i = 0; i < 2; i++) {
+    for (i = 0; i < 5; i++) {
         pinMode(Keypad[i], INPUT);
     }
     while (1) {
@@ -61,24 +61,20 @@ int main(void) {
             }
             digitalWrite(LedRed[i + 1], LOW);
         } else if (keypadnum == 2) {
-            while (1) {
-                for (j = 0; j < 8; j++) {
-                    LedControl(j);
-                    delay(500);
-                }
-                digitalWrite(LedRed[j - 1], LOW);
+            for (i = 0; i < 8; i++) {
+                LedControl(i);
+                delay(500);
             }
+            digitalWrite(LedRed[i - 1], LOW);
         } else if (keypadnum == 3) {
-            while (1) {
-                for (j = 7; j >= 0; j--) {
-                    LedControl(j);
-                    delay(500);
-                }
-                digitalWrite(LedRed[j + 1], LOW);
+            for (i = 7; i >= 0; i--) {
+                LedControl(i);
+                delay(500);
             }
+            digitalWrite(LedRed[i + 1], LOW);
         } else if (keypadnum == 4) {
 //            delay(1000000);
-             return 0;
+            return 0;
             //            for (i = 7; i >= 0; i--) {
             //                LedControl(i);
             //                delay(500);
