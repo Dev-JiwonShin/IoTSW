@@ -80,7 +80,7 @@ int main(void) {
     while (1) {
         keypadnum = KeypadRead();
         
-        if (reading != -1) {
+        if (keypadnum != -1) {
             // If the switch changed, due to noise or pressing:
             if (reading != lastButtonState[i]) {
                 // reset the debouncing timer
