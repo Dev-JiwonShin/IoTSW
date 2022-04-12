@@ -78,30 +78,55 @@ int main() {
 
 
 	// for( int i = 0; i < 6; i++ ) 
+	int i=0;
 while(cnt<6)
 	{
 
 		switch(cnt){
 			case 0 : 
-				int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터				
+				// int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터				
+				data[0]=0;
+				data[1]=1;
+				data[2]=2;
+				data[3]=3;
+				data[4]=4;
+				data[5]=5;
 				break;
 			case 1:
-				int data[6] = { 1, 2, 3, 4, 5,0 }; // 출력할 문자 데이터
+				// int data[6] = { 1, 2, 3, 4, 5,0 }; // 출력할 문자 데이터
+				data[0]=1;
+				data[1]=2;
+				data[2]=3;
+				data[3]=4;
+				data[4]=5;
+				data[5]=6;
 				break;  
 			case 2:
-				int data[6] = { 2, 3, 4, 5, 0, 1 }; // 출력할 문자 데이터
+				// int data[6] = { 2, 3, 4, 5, 0, 1 }; // 출력할 문자 데이터
+				data[0]=2;
+				data[1]=3;
+				data[2]=4;
+				data[3]=5;
+				data[4]=0;
+				data[5]=1;
 				break;
 			case 3:
-				int data[6] = { 3, 4, 5, 0, 1, 2 }; // 출력할 문자 데이터
+				// int data[6] = { 3, 4, 5, 0, 1, 2 }; // 출력할 문자 데이터
+				data[0]=3;
+				data[1]=4;
+				data[2]=5;
+				data[3]=0;
+				data[4]=1;
+				data[5]=2;
 				break;  
 			case 4:
-				int data[6] = { 4, 5, 0, 1, 2, 3 }; // 출력할 문자 데이터
+				// int data[6] = { 4, 5, 0, 1, 2, 3 }; // 출력할 문자 데이터
 				break;  
 			case 5:
-				int data[6] = { 5, 0, 1, 2, 3, 4 }; // 출력할 문자 데이터
+				// int data[6] = { 5, 0, 1, 2, 3, 4 }; // 출력할 문자 데이터
 				break;  
 			default :
-				int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
+				// int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
 				break;
 		}
 
