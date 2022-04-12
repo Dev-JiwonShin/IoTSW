@@ -9,7 +9,7 @@ const int FndPin[8] = { 6, 12, 13, 16, 19, 20, 26, 21 };
 // FND에 출력되는 문자 (0~9) 배열
 // const int FndFont[10] = { 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x67 };
 // const int FndFont[6] = {0x76,0x79,0x38,0x38,0x3F,0x00};
-const int FndFont[6] = {0x00,0x3F,0x38,0x38,0x79,0x76};
+const int FndFont[6] = {0x00,0x00,0x38,0x38,0x79,0x76};
 // H E L L O _
 
 
@@ -94,21 +94,21 @@ int main() {
 				break;
 				case 1:
 				// int data[6] = { 1, 2, 3, 4, 5,0 }; // 출력할 문자 데이터
-				data[0]=1;
-				data[1]=2;
-				data[2]=3;
-				data[3]=4;
-				data[4]=5;
-				data[5]=6;
+				data[0]=5;
+				data[1]=0;
+				data[2]=1;
+				data[3]=2;
+				data[4]=3;
+				data[5]=4;
 				break;  
 				case 2:
 				// int data[6] = { 2, 3, 4, 5, 0, 1 }; // 출력할 문자 데이터
-				data[0]=2;
-				data[1]=3;
-				data[2]=4;
-				data[3]=5;
-				data[4]=0;
-				data[5]=1;
+				data[0]=4;
+				data[1]=5;
+				data[2]=0;
+				data[3]=1;
+				data[4]=2;
+				data[5]=3;
 				break;
 				case 3:
 				// int data[6] = { 3, 4, 5, 0, 1, 2 }; // 출력할 문자 데이터
@@ -121,21 +121,21 @@ int main() {
 				break;  
 				case 4:
 				// int data[6] = { 4, 5, 0, 1, 2, 3 }; // 출력할 문자 데이터
-				data[0]=4;
-				data[1]=5;
-				data[2]=0;
-				data[3]=1;
-				data[4]=2;
-				data[5]=3;
+				data[0]=2;
+				data[1]=3;
+				data[2]=4;
+				data[3]=5;
+				data[4]=0;
+				data[5]=1;
 				break;  
 				case 5:
 				// int data[6] = { 5, 0, 1, 2, 3, 4 }; // 출력할 문자 데이터
-				data[0]=5;
-				data[1]=0;
-				data[2]=1;
-				data[3]=2;
-				data[4]=3;
-				data[5]=4;
+				data[0]=1;
+				data[1]=2;
+				data[2]=3;
+				data[3]=4;
+				data[4]=5;
+				data[5]=6;
 				break;  
 				default :
 				// int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
