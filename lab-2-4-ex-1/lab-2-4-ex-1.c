@@ -7,13 +7,14 @@ const int FndSelectPin[6] = { 4, 17, 18, 27, 22, 23 };
 // FND의 LED와 연결된 라즈베리파이 핀(A, B, …, H)
 const int FndPin[8] = { 6, 12, 13, 16, 19, 20, 26, 21 };
 // FND에 출력되는 문자 (0~9) 배열
-const int FndFont[10] = { 0x3F, 0x06, 0x5B, 0x4F, 0x66,
-	0x6D, 0x7D, 0x07, 0x7F, 0x67 };
+const int FndFont[10] = { 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x67 };
+
+
 // 초기화 함수, WiringPi 라이브러리 초기화, Select 핀 및 LED 핀 초기화를 담당)
 void Init() {
 	int i;
 	if( wiringPiSetupGpio() == -1 ) {
-		printf( “wiringPiSetupGpio() error\n”);
+		printf( "wiringPiSetupGpio() error\n");
 		exit(-1);
 	}
 	for( i = 0; i < 6; i++ ) {
@@ -41,7 +42,7 @@ void FndDisplay(int position, int num) {
 
 int main( int argc, char **argv ) {
 	if( argc != 3) {
-		printf( “Usage: %s [ position ] [ number ] ”, arvg[ 0 ] );
+		printf( "Usage: %s [ position ] [ number ] ", arvg[ 0 ] );
 		exit( -1 );
 	}
 	Init();

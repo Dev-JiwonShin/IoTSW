@@ -14,7 +14,7 @@ const int FndFont[10] = { 0x3F, 0x06, 0x5B, 0x4F, 0x66,
 void Init() {
 	int i;
 	if( wiringPiSetupGpio() == -1 ) {
-		printf( “wiringPiSetupGpio() error\n”);
+		printf( "wiringPiSetupGpio() error\n");
 		exit(-1);
 	}
 	for( i = 0; i < 6; i++ ) {
