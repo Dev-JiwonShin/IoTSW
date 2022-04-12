@@ -56,7 +56,10 @@ void FndDisplay(int position, int num) {
 int main() {
 	int pos;
 	// int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
-	int data[6] = {  5,4,3,2,1,0 }; // 출력할 문자 데이터
+	// output : 5 4 3 2 1 0
+	// int data[6] = {  5,4,3,2,1,0 }; // 출력할 문자 데이터
+	// output : 0 1 2 3 4 5
+	char data[] = " OLLEH"; // 출력할 문자 데이터
 	Init();
 	while(1) {
 		for( pos = 0; pos < 6; pos++ ) {
