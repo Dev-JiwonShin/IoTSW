@@ -42,13 +42,14 @@ void FndSelect (int position) {
 	}
 }
 
+
 // FND를 출력하는 함수
-void FndDisplay(int position, int num) {
+void FndDisplay(int position, int num, int cnt) {
 	int i, j;
 	int flag = 0; // FndPin[ ]을 ON/OFF
 	int shift = 0x01; // FndFont와 And 연산하여 출력할 LED의 상태 결정
 	for( i = 0; i < 8; i++ ) {
-		flag = ( FndFont[num] & shift ); // i = 0, FndFont[ 0 ] = 0x3F라 하면 (0b00111111 & 0b00000100 = 1) 이다.
+		flag = ( FndFont[num+cnt] & shift ); // i = 0, FndFont[ 0 ] = 0x3F라 하면 (0b00111111 & 0b00000100 = 1) 이다.
 		digitalWrite( FndPin[ i ], flag ); // FndPin[ ]을 flag( 0또는 1 )로 ON/OFF
 		shift <<= 1; // 왼쪽으로 한 비트 쉬프트한다. I = 0이라 하면, ( shift = 0b00000001 )에서 ( shift = 0b00000010)로 변한다.
 	}
@@ -59,14 +60,18 @@ int main() {
 	int pos;
 	// int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
 	// output : 5 4 3 2 1 0
-	// int data[6] = {  5,4,3,2,1,0 }; // 출력할 문자 데이터
+	int data[6] = {  5,4,3,2,1,0 }; // 출력할 문자 데이터
 	// output : 0 1 2 3 4 5
-	char data[] = "HELLO"; // 출력할 문자 데이터
+	// char data[] = "HELLO"; // 출력할 문자 데이터
 	Init();
 	while(1) {
 		for( pos = 0; pos < 6; pos++ ) {
-			FndDisplay( pos, data[ pos ] );
-			delay(1); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
+			FndDisplay( pos, data[ pos ],cnt);
+			delay(500); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
+		}
+		cnt++;
+		if(cnt==6){
+			cnt=0;
 		}
 	}
 	return 0;
