@@ -57,7 +57,8 @@ void FndDisplay(int position, int num, int cnt) {
 }
 
 int main() {
-	int pos;
+		int pos,cnt=0;
+
 	// int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
 	// output : 5 4 3 2 1 0
 	int data[6] = {  5,4,3,2,1,0 }; // 출력할 문자 데이터
