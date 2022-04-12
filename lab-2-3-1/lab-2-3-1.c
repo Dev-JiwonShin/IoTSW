@@ -52,7 +52,7 @@ int KeypadRead() {
             buttonState[i] =  reading[i];
 
 // only toggle the LED if the new button state is HIGH
-            if (buttonState[i] == HIGH) {
+            if (buttonState[i] == 1) {
               ledState[i] = !ledState[i];
           }
       }
