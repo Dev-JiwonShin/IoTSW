@@ -7,7 +7,8 @@ const int Keypad[8] = {16, 13, 12, 6, 21, 26, 20, 19};
 // 3, 2, 1, 0, 7, 6, 5, 4
 
 // Variables will change:
-int ledState[8] = {HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH};         // the current state of the output pin
+// int ledState[8] = {HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH};         // the current state of the output pin
+int ledState[8] =  {LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW};                 // the current state of the output pin
 int buttonState[8] = {-2, -2, -2, -2, -2, -2, -2, -2};             // the current reading from the input pin
 int lastButtonState[8] = {LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW};   // the previous reading from the input pin
 
