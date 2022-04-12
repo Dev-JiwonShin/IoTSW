@@ -9,7 +9,6 @@ const int Keypad[8] = {16, 13, 12, 6, 21, 26, 20, 19};
 
 // Variables will change:
 int ledState[8] = {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH};         // the current state of the output pin
-// int ledState[8] = {1,1,1,1,1,1,1,1};         // the current state of the output pin
 int buttonState[8]={-2,-2,-2,-2,-2,-2,-2,-2};             // the current reading from the input pin
 int lastButtonState[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW,LOW};   // the previous reading from the input pin
 // int lastButtonState[8] = {0,0,0,0,0,0,0,0};   // the previous reading from the input pin
@@ -22,20 +21,30 @@ unsigned long debounceDelay = 100;    // the debounce time; increase if the outp
 
 int reading[8]={-1,-1,-1,-1,-1,-1,-1,-1};
 
+
 void LedControl(int keypadnum) {
     int i,j;
     for (i = 0; i < 8; i++) {
 
-        for (j = 0; j < 8; j++) {
-            if(buttonState[j] != HIGH){
-                if (i == keypadnum)
-                  digitalWrite(LedRed[i], HIGH);
-              else
-                  digitalWrite(LedRed[i], LOW);
-          }
+        // for (j = 0; j < 8; j++) {
+            // if(buttonState[j] != HIGH){
+        if (i == keypadnum){
+          digitalWrite(LedRed[i], HIGH);
       }
-  }
+      else{
+        if(ledState[i]){
+
+        }else{
+        digitalWrite(LedRed[i], LOW);
+            
+        }
+
+
+    }
+          // }
+      // }
 }
+
 
 
 int KeypadRead() {
