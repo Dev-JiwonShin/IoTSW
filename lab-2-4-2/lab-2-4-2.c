@@ -78,8 +78,8 @@ int main() {
 
 
 	// for( int i = 0; i < 6; i++ ) 
-	int i=0;
-while(cnt<6)
+	// int i=0;
+	while(cnt<6)
 	{
 
 		switch(cnt){
@@ -92,7 +92,7 @@ while(cnt<6)
 				data[4]=4;
 				data[5]=5;
 				break;
-			case 1:
+				case 1:
 				// int data[6] = { 1, 2, 3, 4, 5,0 }; // 출력할 문자 데이터
 				data[0]=1;
 				data[1]=2;
@@ -101,7 +101,7 @@ while(cnt<6)
 				data[4]=5;
 				data[5]=6;
 				break;  
-			case 2:
+				case 2:
 				// int data[6] = { 2, 3, 4, 5, 0, 1 }; // 출력할 문자 데이터
 				data[0]=2;
 				data[1]=3;
@@ -110,7 +110,7 @@ while(cnt<6)
 				data[4]=0;
 				data[5]=1;
 				break;
-			case 3:
+				case 3:
 				// int data[6] = { 3, 4, 5, 0, 1, 2 }; // 출력할 문자 데이터
 				data[0]=3;
 				data[1]=4;
@@ -119,34 +119,46 @@ while(cnt<6)
 				data[4]=1;
 				data[5]=2;
 				break;  
-			case 4:
+				case 4:
 				// int data[6] = { 4, 5, 0, 1, 2, 3 }; // 출력할 문자 데이터
+				data[0]=4;
+				data[1]=5;
+				data[2]=0;
+				data[3]=1;
+				data[4]=2;
+				data[5]=3;
 				break;  
-			case 5:
+				case 5:
 				// int data[6] = { 5, 0, 1, 2, 3, 4 }; // 출력할 문자 데이터
+				data[0]=5;
+				data[1]=0;
+				data[2]=1;
+				data[3]=2;
+				data[4]=3;
+				data[5]=4;
 				break;  
-			default :
+				default :
 				// int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
 				break;
-		}
-
-		while(1){
-			cur_time = millis();
-			if(cur_time - pre_time >= duration){
-				break;
-			    // pre_time = cur_time;// Update previous counter time.
 			}
-			else{
-				for( pos = 0; pos < 6; pos++ ) {
-			// FndDisplay( pos, data[ pos ], cnt);
-			FndDisplay( pos, data[ pos ]);
-			delay(1); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
+
+			while(1){
+				cur_time = millis();
+				if(cur_time - pre_time >= duration){
+				    pre_time = cur_time;// Update previous counter time.
+				    break;
+				}
+				else{
+					for( pos = 0; pos < 6; pos++ ) {
+						// FndDisplay( pos, data[ pos ], cnt);
+						FndDisplay( pos, data[ pos ]);
+						delay(1); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
+					}
 				}
 			}
+			delay(500);
+			cnt++;
 		}
-		delay(500);
-		cnt++;
-	}
 
 
 // for( int i = 0; i < 6; i++ ) {
