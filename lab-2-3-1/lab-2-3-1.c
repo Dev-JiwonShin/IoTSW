@@ -1,94 +1,76 @@
 #include <wiringPi.h>
+
 // constants won't change. They're used here to set pin numbers:
 const int LedRed[8] = {4, 17, 18, 27, 22, 23, 24, 25};
 // 0, 1, 2, 3, 4, 5, 6, 7
 const int Keypad[8] = {16, 13, 12, 6, 21, 26, 20, 19};
 // 3, 2, 1, 0, 7, 6, 5, 4
 
-
-
 // Variables will change:
-int ledState[8] = {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH};         // the current state of the output pin
-int buttonState[8]={-2,-2,-2,-2,-2,-2,-2,-2};             // the current reading from the input pin
-int lastButtonState[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW,LOW};   // the previous reading from the input pin
-// int lastButtonState[8] = {0,0,0,0,0,0,0,0};   // the previous reading from the input pin
+int ledState[8] = {HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH, HIGH};         // the current state of the output pin
+int buttonState[8] = {-2, -2, -2, -2, -2, -2, -2, -2};             // the current reading from the input pin
+int lastButtonState[8] = {LOW, LOW, LOW, LOW, LOW, LOW, LOW, LOW};   // the previous reading from the input pin
 
 // the following variables are unsigned longs because the time, measured in
 // milliseconds, will quickly become a bigger number than can be stored in an int.
-unsigned long lastDebounceTime[8] = {0,0,0,0,0,0,0,0};  // the last time the output pin was toggled
+unsigned long lastDebounceTime[8] = {0, 0, 0, 0, 0, 0, 0, 0};  // the last time the output pin was toggled
 unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
-
-int reading[8]={-1,-1,-1,-1,-1,-1,-1,-1};
-
+int reading[8] = {-1, -1, -1, -1, -1, -1, -1, -1};
 
 void LedControl(int keypadnum) {
-    int i,j;
+    int i;
     for (i = 0; i < 8; i++) {
-
-
-
-        if (i == keypadnum){
-          digitalWrite(LedRed[i], HIGH);
-      }
-      else{
-        if(ledState[i]){
+        if (i == keypadnum) {
+            digitalWrite(LedRed[i], HIGH);
+        } else {
+            if (!ledState[i]) {
+                digitalWrite(LedRed[i], LOW);
+            }
         }
-        else{
-            digitalWrite(LedRed[i], LOW);            
-        }
-
-
     }
 }
-}
-// }
-
-
 
 int KeypadRead() {
     int i, keypadnum = -1;
     for (i = 0; i < 8; i++) {
-        reading[i]= !digitalRead(Keypad[i]);
+        reading[i] = !digitalRead(Keypad[i]);
 
-// If the switch changed, due to noise or pressing:
-        if ( reading[i] != lastButtonState[i]) {
-// reset the debouncing timer
-          lastDebounceTime[i] = millis();
-      }
+        // If the switch changed, due to noise or pressing:
+        if (reading[i] != lastButtonState[i]) {
+            // reset the debouncing timer
+            lastDebounceTime[i] = millis();
+        }
 
-      if ((millis() - lastDebounceTime[i]) > debounceDelay) {
-// whatever the reading is at, it's been there for longer than the debounce
-// delay, so take it as the actual current state:
+        if ((millis() - lastDebounceTime[i]) > debounceDelay) {
+            // whatever the reading is at, it's been there for longer than the debounce
+            // delay, so take it as the actual current state:
 
-// if the button state has changed:
-          if ( reading[i] != buttonState[i]) {
-            buttonState[i] =  reading[i];
+            // if the button state has changed:
+            if (reading[i] != buttonState[i]) {
+                buttonState[i] = reading[i];
 
-// only toggle the LED if the new button state is HIGH
-            if (buttonState[i] == HIGH) {
-            // if (buttonState[i] == 1) {
-              ledState[i] = !ledState[i];
-          }
-      }
-  }
+                // only toggle the LED if the new button state is HIGH
+                if (buttonState[i] == HIGH) {
+                    // if (buttonState[i] == 1) {
+                    ledState[i] = !ledState[i];
+                }
+            }
+        }
 
+        // save the reading. Next time through the loop, it'll be the lastButtonState:
+        lastButtonState[i] = reading[i];
 
-// save the reading. Next time through the loop, it'll be the lastButtonState:
-  lastButtonState[i] =  reading[i];
+        if (reading[i]) {
+            keypadnum = i;
+            break;
+        }
 
-
-  if (reading[i]) {
-    keypadnum = i;
-    break;
-}
-
-}
-return keypadnum;
+    }
+    return keypadnum;
 }
 
 int main(void) {
-
 //void setup(){
     int i, keypadnum = -1;
     if (wiringPiSetupGpio() == -1)
