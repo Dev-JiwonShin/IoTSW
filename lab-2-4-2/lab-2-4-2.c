@@ -93,8 +93,8 @@ int main() {
 	int pos;
 	// int data[6] = { 5,4,3,2,1,0}; // 출력할 문자 데이터
 	// char data[7] = { " " ,"H","E","L","L","O"}; // 출력할 문자 데이터
-	char data[7] = { "O","L","L","E","H"," "}; // 출력할 문자 데이터
-	// char data[6] = " HELLO"; // 출력할 문자 데이터
+	// char data[7] = { "O","L","L","E","H"," "}; // 출력할 문자 데이터
+	char data[7] = " OLLEH"; // 출력할 문자 데이터
 	Init();
 	while(1) {
 		for( pos = 0; pos < 6; pos++ ) {
