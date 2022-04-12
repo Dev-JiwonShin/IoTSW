@@ -37,7 +37,7 @@ int KeypadRead() {
         reading[i]= !digitalRead(Keypad[i]);
 
 // If the switch changed, due to noise or pressing:
-        if ( reading[i]!= lastButtonState) {
+        if ( reading[i] != lastButtonState) {
 // reset the debouncing timer
           lastDebounceTime[i] = millis();
       }
@@ -52,7 +52,7 @@ int KeypadRead() {
 
 // only toggle the LED if the new button state is HIGH
             if (buttonState[i] == HIGH) {
-              ledState = !ledState;
+              ledState[i] = !ledState[i];
           }
       }
   }
