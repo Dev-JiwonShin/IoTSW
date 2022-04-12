@@ -1,8 +1,5 @@
 #include <wiringPi.h>
 // constants won't change. They're used here to set pin numbers:
-const int buttonPin = 2;    // the number of the pushbutton pin
-const int ledPin = 13;      // the number of the LED pin
-
 const int LedRed[8] = {4, 17, 18, 27, 22, 23, 24, 25};
 // 0, 1, 2, 3, 4, 5, 6, 7
 const int Keypad[8] = {16, 13, 12, 6, 21, 26, 20, 19};
