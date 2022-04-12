@@ -64,7 +64,7 @@ void FndDisplay(int position, int num) {
 }
 
 int main() {
-    int pos, cnt = 0;
+    int pos, cnt = -1;
     int data[6] = {0, 1, 2, 3, 4, 5}; // 출력할 문자 데이터
     pre_time = millis();
     Init();
