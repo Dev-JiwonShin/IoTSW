@@ -27,7 +27,7 @@ void LedControl(int keypadnum) {
     for (i = 0; i < 8; i++) {
 
         for (j = 0; j < 8; j++) {
-            if(buttonState[j] != -2){
+            if(buttonState[j] != HIGH){
                 if (i == keypadnum)
                   digitalWrite(LedRed[i], HIGH);
               else
