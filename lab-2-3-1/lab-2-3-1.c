@@ -1,4 +1,4 @@
-#include <wiringPi.h>
+// #include <wiringPi.h>
 // constants won't change. They're used here to set pin numbers:
 const int LedRed[8] = {4, 17, 18, 27, 22, 23, 24, 25};
 // 0, 1, 2, 3, 4, 5, 6, 7
@@ -37,7 +37,7 @@ int KeypadRead() {
         reading[i]= !digitalRead(Keypad[i]);
 
 // If the switch changed, due to noise or pressing:
-        if ( *reading[i] != lastButtonState) {
+        if ( reading[i] != lastButtonState[i]) {
 // reset the debouncing timer
           lastDebounceTime[i] = millis();
       }
