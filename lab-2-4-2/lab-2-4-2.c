@@ -64,7 +64,7 @@ int main() {
 			FndDisplay( pos, data[ pos ], cnt);
 			delay(1); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
 		}
-		delay(500);
+		delay(2000);
 		cnt++;
 		if(cnt==6){
 			cnt=0;
