@@ -17,18 +17,23 @@ int lastButtonState[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW,LOW};   // the previous re
 // the following variables are unsigned longs because the time, measured in
 // milliseconds, will quickly become a bigger number than can be stored in an int.
 unsigned long lastDebounceTime[8] = {0,0,0,0,0,0,0,0};  // the last time the output pin was toggled
-unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
+unsigned long debounceDelay = 100;    // the debounce time; increase if the output flickers
 
 
 int reading[8]={-1,-1,-1,-1,-1,-1,-1,-1};
 
 void LedControl(int keypadnum) {
-    int i;
+    int i,j;
     for (i = 0; i < 8; i++) {
-        if (i == keypadnum)
-          digitalWrite(LedRed[i], HIGH);
-      else
-          digitalWrite(LedRed[i], LOW);
+
+        for (j = 0; j < 8; j++) {
+            if(buttonState[j] ==null){
+                if (i == keypadnum)
+                  digitalWrite(LedRed[i], HIGH);
+              else
+                  digitalWrite(LedRed[i], LOW);
+          }
+      }
   }
 }
 
