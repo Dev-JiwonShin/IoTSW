@@ -8,9 +8,10 @@ const int Keypad[8] = {16, 13, 12, 6, 21, 26, 20, 19};
 
 
 // Variables will change:
-int ledState[8] = {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH};         // the current state of the output pin
+// int ledState[8] = {HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH,HIGH};         // the current state of the output pin
+int ledState[8] = {1,1,1,1,1,1,1,1};         // the current state of the output pin
 int buttonState[8];             // the current reading from the input pin
-int lastButtonState[8] = {LOW,LOW,LOW,LOW,LOW,LOW,LOW,LOW};   // the previous reading from the input pin
+int lastButtonState[8] = {0,0,0,0,0,0,0,0};   // the previous reading from the input pin
 
 // the following variables are unsigned longs because the time, measured in
 // milliseconds, will quickly become a bigger number than can be stored in an int.
