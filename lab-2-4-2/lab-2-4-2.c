@@ -10,7 +10,19 @@ const int FndPin[8] = {6, 12, 13, 16, 19, 20, 26, 21};
 // FND에 출력되는 문자 (0~9) 배열
 const int FndFont[10] = { 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x67 };
 
-// const int FndFont_dot[10] = { 1x3F,1x06,1x5B,1x4F,1x66,1x6D,1x7D,1x07,1x7F,1x67 };
+const int FndFont_dot[10] = { 0xBF,0x86,0xDB,0xCF,0xE6,0xED,0xFD,0x87,0xFF,0xE7 };
+
+
+// 0. |	191	/277	0xBF	1 0 1 1   1 1 1 1
+// 1. |	134	/206	0x86	1 0 0 0   0 1 1 0
+// 2. |	219	/333	0xDB	1 1 0 1   1 0 1 1
+// 3. |	207	/317	0xCF	1 1 0 0   1 1 1 1
+// 4. |	230	/346	0xE6	1 1 1 0   0 1 1 0
+// 5. |	237	/355	0xED	1 1 1 0   1 1 0 1
+// 6. |	253	/375	0xFD	1 1 1 1   1 1 0 1
+// 7. |	135	/207	0x87	1 0 0 0   0 1 1 1
+// 8. |	255	/377	0xFF	1 1 1 1   1 1 1 1
+// 9. |	231	/347	0xE7	1 1 1 0   0 1 1 1
 
 
 // Set timer
@@ -100,7 +112,7 @@ int main() {
      //            			break;
     	// }
     	            // FndDisplay( pos, data[ pos ], cnt);
-    	FndDisplay(pos, data[pos]);
+    	            FndDisplay(pos, data[pos]);
                     // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
                 }
                 delay(1); 
