@@ -8,9 +8,8 @@ const int FndSelectPin[6] = { 4, 17, 18, 27, 22, 23 };
 const int FndPin[8] = { 6, 12, 13, 16, 19, 20, 26, 21 };
 // FND에 출력되는 문자 (0~9) 배열
 // const int FndFont[10] = { 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x67 };
-// const int FndFont[6] = {0x76,0x79,0x38,0x38,0x3F,0x7F};
-const int FndFont[5] = {0x76, 0x79, 0x38, 0x38, 0x3F};
-// const int FndFont[5] = {0x3F,0x38,0x38,0x79,0x76};
+const int FndFont[6] = {0x76,0x79,0x38,0x38,0x3F,0x00};
+// H E L L O _
 
 // 초기화 함수, WiringPi 라이브러리 초기화, Select 핀 및 LED 핀 초기화를 담당)
 void Init() {
@@ -42,7 +41,6 @@ void FndSelect (int position) {
 	}
 }
 
-
 // FND를 출력하는 함수
 void FndDisplay(int position, int num, int cnt) {
 	int i, j;
@@ -57,19 +55,16 @@ void FndDisplay(int position, int num, int cnt) {
 }
 
 int main() {
-		int pos,cnt=0;
-
-	// int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
-	// output : 5 4 3 2 1 0
-	int data[6] = {  5,4,3,2,1,0 }; // 출력할 문자 데이터
-	// output : 0 1 2 3 4 5
-	// char data[] = "HELLO"; // 출력할 문자 데이터
+	int pos,cnt=0;
+	int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
 	Init();
+	
 	while(1) {
 		for( pos = 0; pos < 6; pos++ ) {
-			FndDisplay( pos, data[ pos ],cnt);
-			delay(500); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
+			FndDisplay( pos, data[ pos ], cnt);
+			delay(1); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
 		}
+		delay(500);
 		cnt++;
 		if(cnt==6){
 			cnt=0;
