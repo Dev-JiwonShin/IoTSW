@@ -26,24 +26,23 @@ void LedControl(int keypadnum) {
     int i,j;
     for (i = 0; i < 8; i++) {
 
-        // for (j = 0; j < 8; j++) {
-            // if(buttonState[j] != HIGH){
+
+
         if (i == keypadnum){
           digitalWrite(LedRed[i], HIGH);
       }
       else{
         if(ledState[i]){
-
-        }else{
-        digitalWrite(LedRed[i], LOW);
-            
+        }
+        else{
+            digitalWrite(LedRed[i], LOW);            
         }
 
 
     }
-          // }
-      // }
+          }
 }
+// }
 
 
 
