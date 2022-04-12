@@ -42,7 +42,7 @@ void FndDisplay(int position, int num) {
 
 int main( int argc, char **argv ) {
 	if( argc != 3) {
-		printf( "Usage: %s [ position ] [ number ] ", arvg[ 0 ] );
+		printf( "Usage: %s [ position ] [ number ] ", argv[ 0 ] );
 		exit( -1 );
 	}
 	Init();
