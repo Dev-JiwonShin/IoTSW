@@ -10,7 +10,7 @@ const int FndPin[8] = {6, 12, 13, 16, 19, 20, 26, 21};
 // FND에 출력되는 문자 (0~9) 배열
 const int FndFont[10] = { 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x67 };
 
-const int FndFont_dot[10] = { 1x3F,1x06,1x5B,1x4F,1x66,1x6D,1x7D,1x07,1x7F,1x67 };
+// const int FndFont_dot[10] = { 1x3F,1x06,1x5B,1x4F,1x66,1x6D,1x7D,1x07,1x7F,1x67 };
 
 
 // Set timer
@@ -55,12 +55,12 @@ void FndSelect(int position) {
     int flag = 0; // FndPin[ ]을 ON/OFF
     int shift = 0x01; // FndFont와 And 연산하여 출력할 LED의 상태 결정
     for (i = 0; i < 8; i++) {
-    	if(i!=4){
+    	// if(i!=4){
     		flag = (FndFont[num] & shift);
-    	}
-    	else{
-    		flag = (FndFont_dot[num] & shift); 
-    	}
+    	// }
+    	// else{
+    		// flag = (FndFont_dot[num] & shift); 
+    	// }
     	digitalWrite(FndPin[i], flag); 
     	shift <<= 1; 
     }
