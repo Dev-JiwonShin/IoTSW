@@ -20,16 +20,6 @@ unsigned long debounceDelay = 50;    // the debounce time; increase if the outpu
 
 int reading[8]={-1,-1,-1,-1,-1,-1,-1,-1};
 
-
-// void setup() {
-//   pinMode(buttonPin, INPUT);
-//   pinMode(ledPin, OUTPUT);
-
-//   // set initial LED state
-//   digitalWrite(ledPin, ledState);
-// }
-
-
 void LedControl(int keypadnum) {
     int i;
     for (i = 0; i < 8; i++) {
@@ -47,21 +37,21 @@ int KeypadRead() {
         reading[i]= !digitalRead(Keypad[i]);
 
 // If the switch changed, due to noise or pressing:
-        if (reading != lastButtonState) {
+        if ( reading[i]!= lastButtonState) {
 // reset the debouncing timer
-          lastDebounceTime = millis();
+          lastDebounceTime[i] = millis();
       }
 
-      if ((millis() - lastDebounceTime) > debounceDelay) {
+      if ((millis() - lastDebounceTime[i]) > debounceDelay) {
 // whatever the reading is at, it's been there for longer than the debounce
 // delay, so take it as the actual current state:
 
 // if the button state has changed:
-          if (reading != buttonState) {
-            buttonState = reading;
+          if ( reading[i] != buttonState[i]) {
+            buttonState[i] =  reading[i];
 
 // only toggle the LED if the new button state is HIGH
-            if (buttonState == HIGH) {
+            if (buttonState[i] == HIGH) {
               ledState = !ledState;
           }
       }
@@ -69,7 +59,7 @@ int KeypadRead() {
 
 
 // save the reading. Next time through the loop, it'll be the lastButtonState:
-  lastButtonState = reading;
+  lastButtonState[i] =  reading[i];
 
 
   if (reading[i]) {
