@@ -158,6 +158,8 @@ int main() {
 			}
 			// delay(500);
 			cnt++;
+			if(cnt==6)
+			cnt=0;
 		}
 
 
