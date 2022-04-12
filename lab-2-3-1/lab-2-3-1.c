@@ -1,3 +1,5 @@
+// https://docs.arduino.cc/built-in-examples/digital/Debounce
+
 #include <wiringPi.h>
 
 // constants won't change. They're used here to set pin numbers:
@@ -91,7 +93,6 @@ int main(void) {
         LedControl(keypadnum);
     }
 //}
-
 
     return 0;
 }
