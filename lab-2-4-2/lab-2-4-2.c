@@ -91,10 +91,10 @@ void FndDisplay(int position, int num) {
 
 int main() {
 	int pos;
-	int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
+	int data[6] = { "" ,"H","E","L","L","O"}; // 출력할 문자 데이터
 	Init();
 	while(1) {
-		for( pos = 0; pos < 6; pos++ ) {
+		for( pos = 6; pos > -1; pos-- ) {
 			FndDisplay( pos, data[ pos ] );
 			delay(1); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
 		}
