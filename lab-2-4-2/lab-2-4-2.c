@@ -8,8 +8,16 @@ const int FndSelectPin[6] = { 4, 17, 18, 27, 22, 23 };
 const int FndPin[8] = { 6, 12, 13, 16, 19, 20, 26, 21 };
 // FND에 출력되는 문자 (0~9) 배열
 // const int FndFont[10] = { 0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x67 };
-const int FndFont[6] = {0x76,0x79,0x38,0x38,0x3F,0x00};
+// const int FndFont[6] = {0x76,0x79,0x38,0x38,0x3F,0x00};
+const int FndFont[6] = {0x00,0x3F,0x38,0x38,0x79,0x76};
 // H E L L O _
+
+
+// Set timer
+unsigned long pre_time = 0;
+unsigned long cur_time = 0;
+const int duration = 1000;
+
 
 // 초기화 함수, WiringPi 라이브러리 초기화, Select 핀 및 LED 핀 초기화를 담당)
 void Init() {
@@ -43,8 +51,8 @@ void FndSelect (int position) {
 
 // FND를 출력하는 함수
 // void FndDisplay(int position, int num, int cnt) {
-void FndDisplay(int position, int num) {
-	int i, j;
+	void FndDisplay(int position, int num) {
+		int i, j;
 	int flag = 0; // FndPin[ ]을 ON/OFF
 	int shift = 0x01; // FndFont와 And 연산하여 출력할 LED의 상태 결정
 	for( i = 0; i < 8; i++ ) {
@@ -57,20 +65,73 @@ void FndDisplay(int position, int num) {
 
 int main() {
 	int pos,cnt=0;
-	int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
+	// int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
+	pre_time = millis();
 	Init();
 	
-	while(1) {
-		for( pos = 0; pos < 6; pos++ ) {
+
+	// delay(2000);
+	// cnt++;
+	// if(cnt==6){
+	// 	cnt=0;
+	// }
+
+
+	for( int i = 0; i < 6; i++ ) {
+		switch(i){
+			case 0 : 
+				int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터				
+				break;
+			case 1:
+				int data[6] = { 1, 2, 3, 4, 5,0 }; // 출력할 문자 데이터
+				break;  
+			case 2:
+				int data[6] = { 2, 3, 4, 5, 0, 1 }; // 출력할 문자 데이터
+				break;
+			case 3:
+				int data[6] = { 3, 4, 5, 0, 1, 2 }; // 출력할 문자 데이터
+				break;  
+			case 4:
+				int data[6] = { 4, 5, 0, 1, 2, 3 }; // 출력할 문자 데이터
+				break;  
+			case 5:
+				int data[6] = { 5, 0, 1, 2, 3, 4 }; // 출력할 문자 데이터
+				break;  
+			default :
+				int data[6] = { 0, 1, 2, 3, 4, 5 }; // 출력할 문자 데이터
+				break;
+		}
+
+		while(1){
+			cur_time = millis();
+			if(cur_time - pre_time >= duration){
+				break;
+			    // pre_time = cur_time;// Update previous counter time.
+			}
+			else{
+				for( pos = 0; pos < 6; pos++ ) {
 			// FndDisplay( pos, data[ pos ], cnt);
 			FndDisplay( pos, data[ pos ]);
 			delay(1); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
+				}
+			}
 		}
-		delay(2000);
-		cnt++;
-		if(cnt==6){
-			cnt=0;
-		}
+		delay(500);
 	}
+
+
+// for( int i = 0; i < 6; i++ ) {
+
+// 	while(1) {
+// 		for( pos = 0; pos < 6; pos++ ) {
+// 			// FndDisplay( pos, data[ pos ], cnt);
+// 			FndDisplay( pos, data[ pos ]);
+// 			delay(1); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
+// 		}
+// 	}		
+// 		delay(500); // WiringPi 라이브러리에서 정의된 delay() 함수, void delay( unsinged int howLong )
+// 	}
+
+
 	return 0;
 }
