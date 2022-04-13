@@ -77,11 +77,20 @@ void FndDisplay(int position, int num) {
     int flag = 0; // FndPin[ ]을 ON/OFF
     int shift = 0x01; // FndFont와 And 연산하여 출력할 LED의 상태 결정
     for (i = 0; i < 8; i++) {
-    	if (i != 4) {
-    		flag = (FndFont[num] & shift);
-    	} else {
-    		flag = (FndFont_dot[num] & shift);
-    	}
+    	flag = (FndFont[num] & shift);
+    	digitalWrite(FndPin[i], flag);
+    	shift <<= 1;
+    }
+    FndSelect(position);
+}
+
+// '.'이 표현 되어야 하는 1의자리수 FND를 출력하는 함수
+void FndDisplay_digit_10e0(int position, int num) {
+	int i;
+    int flag = 0; // FndPin[ ]을 ON/OFF
+    int shift = 0x01; // FndFont와 And 연산하여 출력할 LED의 상태 결정
+    for (i = 0; i < 8; i++) {
+    	flag = (FndFont_dot[num] & shift);
     	digitalWrite(FndPin[i], flag);
     	shift <<= 1;
     }
@@ -122,7 +131,7 @@ int main() {
             			delay(1);
             			break;
             			case 2:
-            			FndDisplay(pos, digit_10e0);
+            			FndDisplay_digit_10e0(pos, digit_10e0);
             			delay(1);
             			break;
             			case 1:
