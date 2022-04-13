@@ -32,7 +32,7 @@ unsigned long pre_time_2 = 0;
 unsigned long cur_time = 0;
 unsigned long cur_time_2 = 0;
 const int duration = 100;
-const long duration_2 = 106;
+const long duration_2 = 94;
 
 int digit_10e_2f = 0;
 int digit_10e_1f = 0;
@@ -98,7 +98,7 @@ void FndDisplay_digit_10e0(int position, int num) {
 }
 
 int main() {
-	int pos, cnt = -1;
+	int pos;
     int data[6] = {0, 1, 2, 3, 4, 5}; // 출력할 문자 데이터
     // int data[6] = {5,4,3,2,1,0}; // 출력할 문자 데이터
     // pre_time = millis();
@@ -142,7 +142,8 @@ int main() {
             			FndDisplay(pos, digit_10e_2f);
             			if (digit_10e_2f != 9) {
             				digit_10e_2f++;
-            			}else{
+            			}
+            			else{
             				digit_10e_2f=0;
             			}
             			delay(1);
@@ -154,14 +155,6 @@ int main() {
             	}
             }
         }
-
-        // int digit_10e_2f=0;
-        // int digit_10e_1f=0;
-        // int digit_10e0=0;
-        // int digit_10e1=0;
-        // int digit_10e2=0;
-        // int digit_10e3=0;
-
         if (digit_10e_1f != 9) {
         	digit_10e_1f++;
         } else {
@@ -186,14 +179,7 @@ int main() {
         			}
         		}
         	}
-
         }
-
-
-        // delay(500);
-        cnt++;
-        if (cnt == 10)
-        	cnt = 0;
     }
     return 0;
 }
