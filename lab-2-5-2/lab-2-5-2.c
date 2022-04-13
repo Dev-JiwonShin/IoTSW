@@ -26,14 +26,14 @@ int main(void) {
         int cnt = 0;
         while (cnt < 100) {
             softPwmWrite(Led[0], cnt);
-            delay(50);
+            delay(20);
             cnt++;
         }
         delay(100);
 
         while (cnt > 0) {
             softPwmWrite(Led[0], cnt);
-            delay(50);
+            delay(20);
             cnt--;
         }
         delay(100);
