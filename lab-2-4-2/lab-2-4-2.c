@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <wiringPi.h>
+#include <math.h>
 
 // 각 FND와 연결된 라즈베리파이 핀(S0, S1, …, S5)
 const int FndSelectPin[6] = {4, 17, 18, 27, 22, 23};
@@ -31,7 +32,7 @@ unsigned long pre_time_2 = 0;
 unsigned long cur_time = 0;
 unsigned long cur_time_2 = 0;
 const int duration = 100;
-const int duration_2 = 10;
+const double duration_2 = 10;
 
 int digit_10e_2f = 0;
 int digit_10e_1f = 0;
@@ -97,7 +98,7 @@ int main() {
 
     while (1) {
         cur_time_2 = millis();
-        long time_unit = cur_time_2 - pre_time_2;
+        double time_unit = cur_time_2 - pre_time_2;
         time_unit = floor(time_unit);
 
         if (time_unit >= duration_2) {
@@ -145,7 +146,7 @@ int main() {
         if (digit_10e0 != 9) {
             digit_10e0++;
         } else {
-            digit_10e = 0;
+            digit_10e0 = 0;
             if (digit_10e1 != 9) {
                 digit_10e1++;
             } else {
