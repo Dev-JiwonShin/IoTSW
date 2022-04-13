@@ -54,7 +54,7 @@ while (1) {
         MotorControl(LEFT_ROTATE,100); 
         delay(2000);
         MotorStop(); // Motor 정지
-        delay(4000);
+        delay(2000);
         
         MotorControl(RIGHT_ROTATE,100); 
         delay(2000);
@@ -74,7 +74,7 @@ while (1) {
         MotorControl(RIGHT_ROTATE,25); 
         delay(2000);
         MotorStop(); // Motor 정지
-        delay(4000);
+        delay(2000);
 
     }
     return 0;
