@@ -28,11 +28,11 @@ const int FndFont_dot[10] = {0xBF, 0x86, 0xDB, 0xCF, 0xE6, 0xED, 0xFD, 0x87, 0xF
 
 // Set timer
 unsigned long pre_time = 0;
-unsigned double pre_time_2 = 0;
+unsigned long pre_time_2 = 0;
 unsigned long cur_time = 0;
-unsigned double cur_time_2 = 0;
+unsigned long cur_time_2 = 0;
 const int duration = 100;
-const double duration_2 = 10;
+const long duration_2 = 10;
 
 int digit_10e_2f = 0;
 int digit_10e_1f = 0;
@@ -98,10 +98,10 @@ int main() {
 
     while (1) {
     	cur_time_2 = millis();
-    	double time_unit = cur_time_2 - pre_time_2;
-    	double time_unit_no_float =floor(time_unit);
+    	unsigned long time_unit = cur_time_2 - pre_time_2;
+    	// double time_unit_no_float =floor(time_unit);
 
-    	if (time_unit_no_float >= duration_2) {
+    	if (time_unit >= duration_2) {
             pre_time_2 = cur_time_2;// Update previous counter time.
             break;
         } else {
