@@ -11,15 +11,15 @@ const int Led[16] = {
 };
 
 
-void LedControl(int BRIGHT) {
-    if (rotate == LEFT_ROTATE) {
-        digitalWrite(MOTOR_MT_P_PIN, LOW);
-        softPwmWrite(MOTOR_MT_N_PIN, 50);
-    } else if (rotate == RIGHT_ROTATE) {
-        digitalWrite(MOTOR_MT_N_PIN, LOW);
-        softPwmWrite(MOTOR_MT_P_PIN, 50);
-    }
-}
+// void LedControl(int BRIGHT) {
+//     if (rotate == LEFT_ROTATE) {
+//         digitalWrite(MOTOR_MT_P_PIN, LOW);
+//         softPwmWrite(MOTOR_MT_N_PIN, 50);
+//     } else if (rotate == RIGHT_ROTATE) {
+//         digitalWrite(MOTOR_MT_N_PIN, LOW);
+//         softPwmWrite(MOTOR_MT_P_PIN, 50);
+//     }
+// }
 
 
 int main(void) {
