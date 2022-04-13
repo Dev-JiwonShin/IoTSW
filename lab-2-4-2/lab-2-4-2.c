@@ -44,12 +44,12 @@ int digit_10e3 = 0;
 
 // 초기화 함수, WiringPi 라이브러리 초기화, Select 핀 및 LED 핀 초기화를 담당)
 void Init() {
-    int i;
-    if (wiringPiSetupGpio() == -1) {
-        printf("wiringPiSetupGpio() error\n");
-        exit(-1);
-    }
-    for (i = 0; i < 6; i++) {
+	int i;
+	if (wiringPiSetupGpio() == -1) {
+		printf("wiringPiSetupGpio() error\n");
+		exit(-1);
+	}
+	for (i = 0; i < 6; i++) {
         pinMode(FndSelectPin[i], OUTPUT); // Select 핀을 출력으로 설정
         digitalWrite(FndSelectPin[i], HIGH); // Select 핀 OFF
     }
@@ -61,9 +61,9 @@ void Init() {
 
 // FND를 선택하는 함수, S0 ~ S5 중 파라미터(position)에 해당하는 FND 선택
 void FndSelect(int position) {
-    int i;
-    for (i = 0; i < 6; i++) {
-        if (i == position) {
+	int i;
+	for (i = 0; i < 6; i++) {
+		if (i == position) {
             digitalWrite(FndSelectPin[i], LOW); // 선택된 FND의 Select 핀 ON
         } else {
             digitalWrite(FndSelectPin[i], HIGH); // 선택되지 않은 FND의 Select 핀 OFF
@@ -73,65 +73,65 @@ void FndSelect(int position) {
 
 // FND를 출력하는 함수
 void FndDisplay(int position, int num) {
-    int i;
+	int i;
     int flag = 0; // FndPin[ ]을 ON/OFF
     int shift = 0x01; // FndFont와 And 연산하여 출력할 LED의 상태 결정
     for (i = 0; i < 8; i++) {
-        if (i != 4) {
-            flag = (FndFont[num] & shift);
-        } else {
-            flag = (FndFont_dot[num] & shift);
-        }
-        digitalWrite(FndPin[i], flag);
-        shift <<= 1;
+    	if (i != 4) {
+    		flag = (FndFont[num] & shift);
+    	} else {
+    		flag = (FndFont_dot[num] & shift);
+    	}
+    	digitalWrite(FndPin[i], flag);
+    	shift <<= 1;
     }
     FndSelect(position);
 }
 
 int main() {
-    int pos, cnt = -1;
-    // int data[6] = {0, 1, 2, 3, 4, 5}; // 출력할 문자 데이터
-    int data[6] = {5,4,3,2,1,0}; // 출력할 문자 데이터
+	int pos, cnt = -1;
+    int data[6] = {0, 1, 2, 3, 4, 5}; // 출력할 문자 데이터
+    // int data[6] = {5,4,3,2,1,0}; // 출력할 문자 데이터
     // pre_time = millis();
     pre_time_2 = millis();
     Init();
 
 
     while (1) {
-        while (1) {
-            cur_time_2 = millis();
-            unsigned long time_unit = cur_time_2 - pre_time_2;
+    	while (1) {
+    		cur_time_2 = millis();
+    		unsigned long time_unit = cur_time_2 - pre_time_2;
             // double time_unit_no_float =floor(time_unit);
 
-            if (time_unit >= duration_2) {
+    		if (time_unit >= duration_2) {
                 pre_time_2 = cur_time_2;// Update previous counter time.
                 break;
             } else {
-                for (pos = 0; pos < 6; pos++) {
-                    switch (pos) {
-                        case 0 :
-                            FndDisplay(pos, digit_10e3);
-                                    delay(1);
-                            break;
-                        case 1:
-                            FndDisplay(pos, digit_10e2);
-                            delay(1);break;
-                        case 2:
-                            FndDisplay(pos, digit_10e1);
-                            delay(1);break;
-                        case 3:
-                            FndDisplay(pos, digit_10e0);
-                            delay(1);break;
-                        case 4:
-                            FndDisplay(pos, digit_10e_1f);
-                            delay(1);break;
-                        case 5:
-                            FndDisplay(pos, digit_10e_2f);
-                            delay(1);break;
-                        default :
-                            break;
-                    }
-                }
+            	for (pos = 0; pos < 6; pos++) {
+            		switch (pos) {
+            			case 5 :
+            			FndDisplay(pos, digit_10e3);
+            			delay(1);
+            			break;
+            			case 4:
+            			FndDisplay(pos, digit_10e2);
+            			delay(1);break;
+            			case 3:
+            			FndDisplay(pos, digit_10e1);
+            			delay(1);break;
+            			case 2:
+            			FndDisplay(pos, digit_10e0);
+            			delay(1);break;
+            			case 1:
+            			FndDisplay(pos, digit_10e_1f);
+            			delay(1);break;
+            			case 0:
+            			FndDisplay(pos, digit_10e_2f);
+            			delay(1);break;
+            			default :
+            			break;
+            		}
+            	}
             }
         }
 
@@ -143,29 +143,29 @@ int main() {
         // int digit_10e3=0;
 
         if (digit_10e_1f != 9) {
-            digit_10e_1f++;
+        	digit_10e_1f++;
         } else {
-            digit_10e_1f = 0;
-            if (digit_10e0 != 9) {
-                digit_10e0++;
-            } else {
-                digit_10e0 = 0;
-                if (digit_10e1 != 9) {
-                    digit_10e1++;
-                } else {
-                    digit_10e1 = 0;
-                    if (digit_10e2 != 9) {
-                        digit_10e2++;
-                    } else {
-                        digit_10e2 = 0;
-                        if (digit_10e3 != 9) {
-                            digit_10e3++;
-                        } else {
-                            digit_10e3 = 0;
-                        }
-                    }
-                }
-            }
+        	digit_10e_1f = 0;
+        	if (digit_10e0 != 9) {
+        		digit_10e0++;
+        	} else {
+        		digit_10e0 = 0;
+        		if (digit_10e1 != 9) {
+        			digit_10e1++;
+        		} else {
+        			digit_10e1 = 0;
+        			if (digit_10e2 != 9) {
+        				digit_10e2++;
+        			} else {
+        				digit_10e2 = 0;
+        				if (digit_10e3 != 9) {
+        					digit_10e3++;
+        				} else {
+        					digit_10e3 = 0;
+        				}
+        			}
+        		}
+        	}
 
         }
 
@@ -173,7 +173,7 @@ int main() {
         // delay(500);
         cnt++;
         if (cnt == 10)
-            cnt = 0;
+        	cnt = 0;
     }
     return 0;
 }
