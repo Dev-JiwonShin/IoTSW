@@ -148,7 +148,7 @@ int main() {
             			// delay(1);
             			break;
             			default :
-            			delay(10);
+            			delay(1);
             			break;
             		}
             	}
