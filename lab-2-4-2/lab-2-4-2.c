@@ -120,23 +120,23 @@ int main() {
             		switch (pos) {
             			case 5 :
             			FndDisplay(pos, digit_10e3);
-            			delay(1);
+            			// delay(1);
             			break;
             			case 4:
             			FndDisplay(pos, digit_10e2);
-            			delay(1);
+            			// delay(1);
             			break;
             			case 3:
             			FndDisplay(pos, digit_10e1);
-            			delay(1);
+            			// delay(1);
             			break;
             			case 2:
             			FndDisplay_digit_10e0(pos, digit_10e0);
-            			delay(1);
+            			// delay(1);
             			break;
             			case 1:
             			FndDisplay(pos, digit_10e_1f);
-            			delay(1);
+            			// delay(1);
             			break;
             			case 0:
             			FndDisplay(pos, digit_10e_2f);
@@ -145,7 +145,7 @@ int main() {
             			}else{
             				digit_10e_2f=0;
             			}
-            			delay(1);
+            			// delay(1);
             			break;
             			default :
             			break;
