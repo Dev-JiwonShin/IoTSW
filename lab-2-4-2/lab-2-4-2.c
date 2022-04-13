@@ -145,7 +145,7 @@ int main() {
             			}else{
             				digit_10e_2f=0;
             			}
-            			delay(10);
+            			delay(1);
             			break;
             			default :
             			// delay(1);
