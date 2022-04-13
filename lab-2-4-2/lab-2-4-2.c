@@ -115,19 +115,26 @@ int main() {
             			break;
             			case 4:
             			FndDisplay(pos, digit_10e2);
-            			delay(1);break;
+            			delay(1);
+            			break;
             			case 3:
             			FndDisplay(pos, digit_10e1);
-            			delay(1);break;
+            			delay(1);
+            			break;
             			case 2:
             			FndDisplay(pos, digit_10e0);
-            			delay(1);break;
+            			delay(1);
+            			break;
             			case 1:
             			FndDisplay(pos, digit_10e_1f);
-            			delay(1);break;
+            			delay(1);
+            			break;
             			case 0:
             			FndDisplay(pos, digit_10e_2f);
-            			delay(1);break;
+            			if (digit_10e_2f != 9) {
+            				digit_10e_2f++;
+            			}delay(1);
+            			break;
             			default :
             			break;
             		}
