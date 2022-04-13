@@ -32,7 +32,7 @@ unsigned long pre_time_2 = 0;
 unsigned long cur_time = 0;
 unsigned long cur_time_2 = 0;
 const int duration = 100;
-const long duration_2 = 100;
+const long duration_2 = 10;
 
 int digit_10e_2f = 0;
 int digit_10e_1f = 0;
@@ -90,7 +90,8 @@ void FndDisplay(int position, int num) {
 
 int main() {
     int pos, cnt = -1;
-    int data[6] = {0, 1, 2, 3, 4, 5}; // 출력할 문자 데이터
+    // int data[6] = {0, 1, 2, 3, 4, 5}; // 출력할 문자 데이터
+    int data[6] = {5,4,3,2,1,0}; // 출력할 문자 데이터
     // pre_time = millis();
     pre_time_2 = millis();
     Init();
