@@ -32,7 +32,7 @@ unsigned long pre_time_2 = 0;
 unsigned long cur_time = 0;
 unsigned long cur_time_2 = 0;
 const int duration = 100;
-const long duration_2 = 1000;
+const long duration_2 = 100;
 
 int digit_10e_2f = 0;
 int digit_10e_1f = 0;
@@ -110,22 +110,23 @@ int main() {
                     switch (pos) {
                         case 0 :
                             FndDisplay(pos, digit_10e3);
+                                    delay(1);
                             break;
                         case 1:
                             FndDisplay(pos, digit_10e2);
-                            break;
+                            delay(1);break;
                         case 2:
                             FndDisplay(pos, digit_10e1);
-                            break;
+                            delay(1);break;
                         case 3:
                             FndDisplay(pos, digit_10e0);
-                            break;
+                            delay(1);break;
                         case 4:
                             FndDisplay(pos, digit_10e_1f);
-                            break;
+                            delay(1);break;
                         case 5:
                             FndDisplay(pos, digit_10e_2f);
-                            break;
+                            delay(1);break;
                         default :
                             break;
                     }
