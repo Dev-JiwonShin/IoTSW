@@ -31,9 +31,9 @@ unsigned long pre_time = 0;
 unsigned long pre_time_2 = 0;
 unsigned long cur_time = 0;
 unsigned long cur_time_2 = 0;
-// const int duration = 100;
+
 const int duration = 1;
-const long duration_2 = 95;
+const long duration_2 = 96;
 
 int digit_10e_2f = 0;
 int digit_10e_1f = 0;
@@ -111,7 +111,6 @@ int main() {
     	while (1) {
     		cur_time_2 = millis();
     		unsigned long time_unit = cur_time_2 - pre_time_2;
-            // double time_unit_no_float =floor(time_unit);
 
     		if (time_unit >= duration_2) {
                 pre_time_2 = cur_time_2;// Update previous counter time.
@@ -150,7 +149,7 @@ int main() {
             			delay(duration);
             			break;
             			default :
-            			// delay(1);
+            			// delay(duration);
             			break;
             		}
             	}
@@ -184,50 +183,3 @@ int main() {
     }
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// switch (time_unit) {
-// 	case 0 :
-// 	break;
-// 	case 1:
-// 	break;
-// 	case 2:
-// 	break;
-// 	case 3:
-// 	break;
-// 	case 4:
-// 	break;
-// 	case 5:
-// 	break;
-// 	default :
-// 	break;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
