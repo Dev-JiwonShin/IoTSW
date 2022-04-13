@@ -32,7 +32,7 @@ unsigned long pre_time_2 = 0;
 unsigned long cur_time = 0;
 unsigned long cur_time_2 = 0;
 const int duration = 100;
-const long duration_2 = 10;
+const long duration_2 = 100;
 
 int digit_10e_2f = 0;
 int digit_10e_1f = 0;
@@ -133,7 +133,10 @@ int main() {
             			FndDisplay(pos, digit_10e_2f);
             			if (digit_10e_2f != 9) {
             				digit_10e_2f++;
-            			}delay(1);
+            			}else{
+            				digit_10e_2f=0;
+            			}
+            			delay(1);
             			break;
             			default :
             			break;
