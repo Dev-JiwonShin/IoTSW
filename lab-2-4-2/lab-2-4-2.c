@@ -32,8 +32,8 @@ unsigned long pre_time_2 = 0;
 unsigned long cur_time = 0;
 unsigned long cur_time_2 = 0;
 // const int duration = 100;
-const int duration = 2;
-const long duration_2 = 89;
+const int duration = 10;
+const long duration_2 = 60;
 
 int digit_10e_2f = 0;
 int digit_10e_1f = 0;
